@@ -1,13 +1,13 @@
-package com.italo.myweather.ui.dashboard
+package com.italo.myweather.ui.search
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class DashboardViewModel : ViewModel() {
+class SearchViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is dashboard Fragment"
+        value = "This is search Fragment"
     }
     val text: LiveData<String> = _text
 }

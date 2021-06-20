@@ -1,4 +1,4 @@
-package com.italo.myweather.ui.home
+package com.italo.myweather.ui.search
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,15 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.italo.myweather.R
-import com.italo.myweather.databinding.FragmentHomeBinding
+import com.italo.myweather.databinding.FragmentSearchBinding
 
-class HomeFragment : Fragment() {
+class SearchFragment : Fragment() {
 
-    private lateinit var homeViewModel: HomeViewModel
-    private var _binding: FragmentHomeBinding? = null
+    private lateinit var searchViewModel: SearchViewModel
+    private var _binding: FragmentSearchBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -24,17 +22,20 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
+    ): View {
+        searchViewModel =
+            ViewModelProvider(this).get(SearchViewModel::class.java)
 
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentSearchBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+        val textView: TextView = binding.textSearch
+        searchViewModel.text.observe(
+            viewLifecycleOwner,
+            {
+                textView.text = it
+            }
+        )
         return root
     }
 

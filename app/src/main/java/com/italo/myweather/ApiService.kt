@@ -16,5 +16,4 @@ class ApiService {
         }
         return instance
     }
-
 }
