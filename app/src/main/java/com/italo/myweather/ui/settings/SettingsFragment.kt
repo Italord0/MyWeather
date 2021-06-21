@@ -1,10 +1,10 @@
 package com.italo.myweather.ui.settings
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.italo.myweather.databinding.FragmentSettingsBinding
@@ -29,14 +29,18 @@ class SettingsFragment : Fragment() {
         _binding = FragmentSettingsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textSettings
-        settingsViewModel.text.observe(
-            viewLifecycleOwner,
-            {
-                textView.text = it
-            }
-        )
+        settingsViewModel.prefs = context?.getSharedPreferences("prefs", Context.MODE_PRIVATE)
+
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.btnSave.setOnClickListener {
+            // prefsbinding.rgTemperature.checkedRadioButtonId
+            // binding.rgLanguage.checkedRadioButtonId
+        }
     }
 
     override fun onDestroyView() {

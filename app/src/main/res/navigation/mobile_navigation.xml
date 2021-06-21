@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_search">
 
     <fragment
-        android:id="@+id/navigation_home"
+        android:id="@+id/navigation_search"
         android:name="com.italo.myweather.ui.search.SearchFragment"
-        android:label="@string/title_home"
+        android:label="@string/search"
         tools:layout="@layout/fragment_search" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_favorites"
         android:name="com.italo.myweather.ui.favorite.FavoriteFragment"
-        android:label="@string/title_dashboard"
+        android:label="@string/favorites"
         tools:layout="@layout/fragment_favorite" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_settings"
         android:name="com.italo.myweather.ui.settings.SettingsFragment"
-        android:label="@string/title_notifications"
+        android:label="@string/settings"
         tools:layout="@layout/fragment_settings" />
 </navigation>

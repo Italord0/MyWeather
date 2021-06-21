@@ -48,6 +48,7 @@ dependencies {
     implementation navigation_fragment_ktx
     implementation navigation_ui_ktx
     implementation fragment_ktx
+    implementation jetpack_preferences
 
     implementation hilt_android
     kapt kapt_hilt_compiler
