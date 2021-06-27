@@ -8,6 +8,10 @@ plugins {
 apply from: rootProject.projectDir.absolutePath + "/dependencies.gradle"
 
 android {
+
+    def localProperties = new Properties()
+    localProperties.load(new FileInputStream(rootProject.file("local.properties")))
+
     compileSdkVersion compile_version
     buildToolsVersion build_tools_version
 
@@ -22,6 +26,9 @@ android {
     }
 
     buildTypes {
+        debug {
+            resValue("string", "open_weather_key", localProperties['apiKey'])
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -37,6 +44,7 @@ android {
     buildFeatures {
         viewBinding true
     }
+
 }
 
 dependencies {

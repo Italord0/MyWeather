@@ -46,8 +46,9 @@ class SettingsFragment : Fragment() {
             Preferences.set("TEMPERATURE", binding.rgTemperature.checkedRadioButtonId)
             Preferences.set("LANGUAGE", binding.rgLanguage.checkedRadioButtonId)
 
-            if (shouldRecreateLayout)
+            if (shouldRecreateLayout) {
                 activity?.recreate()
+            }
         }
     }
 
