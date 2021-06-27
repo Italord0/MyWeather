@@ -40,7 +40,7 @@ class SettingsFragment : Fragment() {
 
         binding.btnSave.setOnClickListener {
 
-            var shouldRecreateLayout: Boolean =
+            val shouldRecreateLayout: Boolean =
                 binding.rgLanguage.checkedRadioButtonId != Preferences.getLanguageId()
 
             Preferences.set("TEMPERATURE", binding.rgTemperature.checkedRadioButtonId)
