@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Meu Tempo</string>
+    <string name="title_home">Início</string>
+    <string name="save">Salvar</string>
+    <string name="english_us">Inglês (EUA)</string>
+    <string name="portuguese_pt_br">Português (Brasil)</string>
+    <string name="search">Busca</string>
+    <string name="favorites">Favoritos</string>
+    <string name="settings">Configurações</string>
+    <string name="temperature_unit">Unidade de Temperatura</string>
+    <string name="description_language">Idioma</string>
+</resources>

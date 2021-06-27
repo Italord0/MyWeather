@@ -30,18 +30,21 @@
         app:layout_constraintTop_toBottomOf="@id/tvTemperatureUnit">
 
         <RadioButton
+            android:id="@+id/radioButtonC"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/c" />
 
         <RadioButton
+            android:id="@+id/radioButtonF"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/f" />
 
         <RadioButton
+            android:id="@+id/radioButtonK"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -74,12 +77,14 @@
         app:layout_constraintTop_toBottomOf="@id/tvDescriptionLanguage">
 
         <RadioButton
+            android:id="@+id/radioButtonEnglish"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/english_us" />
 
         <RadioButton
+            android:id="@+id/radioButtonPortuguese"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -88,12 +93,12 @@
     </RadioGroup>
 
     <Button
-        android:backgroundTint="@color/green"
         android:id="@+id/btnSave"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="8dp"
         android:layout_marginTop="16dp"
+        android:backgroundTint="@color/green"
         android:padding="12dp"
         android:text="@string/save"
         app:layout_constraintEnd_toEndOf="parent"

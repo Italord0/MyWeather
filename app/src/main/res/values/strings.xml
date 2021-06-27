@@ -1,18 +1,15 @@
 <resources>
     <string name="app_name">MyWeather</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
     <string name="search">Search</string>
     <string name="favorites">Favorites</string>
     <string name="settings">Settings</string>
     <string name="temperature_unit">Temperature Unit</string>
     <string name="description_language">Description Language</string>
-    <string name="english_en">English (EN)</string>
     <string name="portuguese_pt_br">Portuguese (PT-BR)</string>
     <string name="english_us">English (US)</string>
-    <string name="c">ºC</string>
-    <string name="f">ºF</string>
-    <string name="k">ºK</string>
+    <string name="c" translatable="false">ºC</string>
+    <string name="f" translatable="false">ºF</string>
+    <string name="k" translatable="false">ºK</string>
     <string name="save">Save</string>
 </resources>

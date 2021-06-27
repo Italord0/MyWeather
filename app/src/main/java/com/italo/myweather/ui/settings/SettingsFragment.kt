@@ -1,6 +1,5 @@
 package com.italo.myweather.ui.settings
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.italo.myweather.databinding.FragmentSettingsBinding
+import com.italo.myweather.preferences.Preferences
 
 class SettingsFragment : Fragment() {
 
@@ -29,17 +29,25 @@ class SettingsFragment : Fragment() {
         _binding = FragmentSettingsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        settingsViewModel.prefs = context?.getSharedPreferences("prefs", Context.MODE_PRIVATE)
-
         return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.rgTemperature.check(Preferences.getTemperatureId())
+        binding.rgLanguage.check(Preferences.getLanguageId())
+
         binding.btnSave.setOnClickListener {
-            // prefsbinding.rgTemperature.checkedRadioButtonId
-            // binding.rgLanguage.checkedRadioButtonId
+
+            var shouldRecreateLayout: Boolean =
+                binding.rgLanguage.checkedRadioButtonId != Preferences.getLanguageId()
+
+            Preferences.set("TEMPERATURE", binding.rgTemperature.checkedRadioButtonId)
+            Preferences.set("LANGUAGE", binding.rgLanguage.checkedRadioButtonId)
+
+            if (shouldRecreateLayout)
+                activity?.recreate()
         }
     }
 
