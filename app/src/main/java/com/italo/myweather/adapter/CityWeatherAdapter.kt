@@ -13,9 +13,10 @@ import com.squareup.picasso.Picasso
 import kotlin.math.roundToInt
 
 class CityWeatherAdapter(
-    private val cities: List<City>,
     private val callback: (City) -> Unit
 ) : RecyclerView.Adapter<CityWeatherAdapter.ViewHolder>() {
+
+    private var cities: List<City> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_weather, parent, false)
@@ -49,5 +50,10 @@ class CityWeatherAdapter(
         val tvCityName: TextView = itemView.tvCityName
         val tvCityTemp: TextView = itemView.tvCityTemp
         val tvWeatherDescription: TextView = itemView.tvWeatherDescription
+    }
+
+    fun setData(data: List<City>) {
+        cities = data
+        this@CityWeatherAdapter.notifyDataSetChanged()
     }
 }

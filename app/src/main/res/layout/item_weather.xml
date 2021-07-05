@@ -7,8 +7,14 @@
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:backgroundTint="@color/blue">
+        android:layout_height="130dp">
+
+        <ImageView
+            android:id="@+id/ivBackground"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/map_background" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

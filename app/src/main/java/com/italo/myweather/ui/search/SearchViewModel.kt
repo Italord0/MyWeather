@@ -1,5 +1,6 @@
 package com.italo.myweather.ui.search
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.italo.myweather.data.City
@@ -16,7 +17,10 @@ class SearchViewModel @Inject constructor(
     private val useCase: GetCityWeatherUseCase
 ) : ViewModel() {
 
-    val citiesLiveData = MutableLiveData<List<City>>()
+    private val _citiesLiveData = MutableLiveData<List<City>>()
+
+    val citiesLiveData: LiveData<List<City>>
+        get() = _citiesLiveData
 
     fun getCity(name: String) {
         CoroutineScope(Dispatchers.Main).launch {
@@ -24,7 +28,11 @@ class SearchViewModel @Inject constructor(
                 useCase.getCity(name)
             }
 
-            citiesLiveData.value = response?.list
+            _citiesLiveData.postValue(response?.list)
         }
+    }
+
+    fun onCityClicked(it: City) {
+        println(it.name)
     }
 }
