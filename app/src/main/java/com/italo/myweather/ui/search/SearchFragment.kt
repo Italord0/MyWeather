@@ -4,10 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.italo.myweather.R
 import com.italo.myweather.adapter.CityWeatherAdapter
+import com.italo.myweather.data.City
 import com.italo.myweather.databinding.FragmentSearchBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -41,12 +44,20 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        searchViewModel.citiesLiveData.observe(
-            viewLifecycleOwner,
-            { response ->
-                mCityWeatherAdapter.setData(response)
-            }
-        )
+        with(searchViewModel) {
+            citiesLiveData.observe(
+                viewLifecycleOwner,
+                { response ->
+                    mCityWeatherAdapter.setData(response)
+                }
+            )
+            selectedCity.observe(
+                viewLifecycleOwner,
+                { city ->
+                    handleSelectedCity(city)
+                }
+            )
+        }
 
         binding.btnSearch.setOnClickListener {
             searchViewModel.getCity(binding.editTextCity.text.toString())
@@ -62,5 +73,25 @@ class SearchFragment : Fragment() {
         binding.rvCityWeather.adapter = mCityWeatherAdapter
         val layoutManager = LinearLayoutManager(context)
         binding.rvCityWeather.layoutManager = layoutManager
+    }
+
+    private fun handleSelectedCity(city: City) {
+        showDeleteDialog(city)
+    }
+
+    private fun showDeleteDialog(city: City) {
+        val builder: AlertDialog.Builder = AlertDialog.Builder(requireContext())
+        builder.setTitle(getString(R.string.atention))
+        builder.setMessage(getString(R.string.would_you_like_to_favorite_this_city))
+
+        builder.setPositiveButton(getString(R.string.yes)) { _, _ ->
+            searchViewModel.saveFavoriteCity(city)
+        }
+
+        builder.setNegativeButton(getString(R.string.no)) { _, _ ->
+        }
+
+        val dialog: AlertDialog = builder.create()
+        dialog.show()
     }
 }

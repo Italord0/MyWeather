@@ -13,4 +13,9 @@
     <string name="k" translatable="false">ºK</string>
     <string name="save">Save</string>
     <string name="type_a_city">Type a city</string>
+    <string name="atention">Atention</string>
+    <string name="would_you_like_to_favorite_this_city">Would you like to favorite this city?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="would_you_like_to_remove_this_city_from_your_favorite_list">Would you like to remove this city from your favorite list?</string>
 </resources>

@@ -27,7 +27,7 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField ("String", "API_KEY", "\"" + localProperties['apiKey'] + "\"")
+            buildConfigField("String", "API_KEY", "\"" + localProperties['apiKey'] + "\"")
         }
         release {
             minifyEnabled false
@@ -66,4 +66,8 @@ dependencies {
     implementation logging_interceptor
 
     implementation picasso
+
+    implementation room
+    implementation room_ktx
+    kapt room_compiler
 }

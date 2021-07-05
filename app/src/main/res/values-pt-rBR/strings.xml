@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Meu Tempo</string>
+    <string name="app_name">MyWeather - Meu Tempo</string>
     <string name="title_home">Início</string>
     <string name="save">Salvar</string>
     <string name="english_us">Inglês (EUA)</string>
@@ -10,4 +10,10 @@
     <string name="settings">Configurações</string>
     <string name="temperature_unit">Unidade de Temperatura</string>
     <string name="description_language">Idioma</string>
+    <string name="type_a_city">Digite uma cidade</string>
+    <string name="atention">Atenção</string>
+    <string name="would_you_like_to_favorite_this_city">Você quer favoritar esta cidade?</string>
+    <string name="yes">Sim</string>
+    <string name="no">Não</string>
+    <string name="would_you_like_to_remove_this_city_from_your_favorite_list">Você quer remover esta cidade dos seus favoritos?</string>
 </resources>

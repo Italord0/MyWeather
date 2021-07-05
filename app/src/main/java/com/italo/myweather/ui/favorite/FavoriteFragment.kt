@@ -4,18 +4,24 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.italo.myweather.R
+import com.italo.myweather.adapter.CityWeatherAdapter
+import com.italo.myweather.data.City
 import com.italo.myweather.databinding.FragmentFavoriteBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class FavoriteFragment : Fragment() {
 
-    private lateinit var favoriteViewModel: FavoriteViewModel
+    private val favoriteViewModel: FavoriteViewModel by viewModels()
     private var _binding: FragmentFavoriteBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+    private lateinit var mCityWeatherAdapter: CityWeatherAdapter
+
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -23,24 +29,74 @@ class FavoriteFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        favoriteViewModel =
-            ViewModelProvider(this).get(FavoriteViewModel::class.java)
 
-        _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        _binding = FragmentFavoriteBinding.inflate(layoutInflater, container, false)
 
-        val textView: TextView = binding.textFavorite
-        favoriteViewModel.text.observe(
-            viewLifecycleOwner,
-            {
-                textView.text = it
+        mCityWeatherAdapter =
+            CityWeatherAdapter {
+                favoriteViewModel.onCityClicked(it)
             }
-        )
-        return root
+
+        setupRecyclerView()
+
+        favoriteViewModel.getFavoritesFromDb()
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        with(favoriteViewModel) {
+            favoriteCitiesDbLiveData.observe(
+                viewLifecycleOwner,
+                {
+                    favoriteViewModel.getFavoritesFromApi(it)
+                }
+            )
+            favoriteCitiesLiveData.observe(
+                viewLifecycleOwner,
+                {
+                    mCityWeatherAdapter.setData(it)
+                }
+            )
+            selectedCity.observe(
+                viewLifecycleOwner,
+                {
+                    handleSelectedCity(it)
+                }
+            )
+        }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun setupRecyclerView() {
+        binding.rvCityWeather.adapter = mCityWeatherAdapter
+        val layoutManager = LinearLayoutManager(context)
+        binding.rvCityWeather.layoutManager = layoutManager
+    }
+
+    private fun handleSelectedCity(city: City) {
+        showRemoveFavoriteDialog(city)
+    }
+
+    private fun showRemoveFavoriteDialog(city: City) {
+        val builder: AlertDialog.Builder = AlertDialog.Builder(requireContext())
+        builder.setTitle(getString(R.string.atention))
+        builder.setMessage(getString(R.string.would_you_like_to_remove_this_city_from_your_favorite_list))
+
+        builder.setPositiveButton(getString(R.string.yes)) { _, _ ->
+            favoriteViewModel.removeFavoriteCity(city)
+        }
+
+        builder.setNegativeButton(getString(R.string.no)) { _, _ ->
+        }
+
+        val dialog: AlertDialog = builder.create()
+        dialog.show()
     }
 }

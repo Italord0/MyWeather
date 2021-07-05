@@ -6,8 +6,13 @@ import javax.inject.Inject
 class CityWeatherRepository @Inject constructor(
     private val weatherService: WeatherApiService
 ) {
-    suspend fun getCity(query: String): CityWeatherResponse? =
-        weatherService.getCity(
+    suspend fun getCities(query: String): CityWeatherResponse? =
+        weatherService.getCities(
             query
+        )
+
+    suspend fun getCitiesById(ids: List<Long>): CityWeatherResponse? =
+        weatherService.getCitiesById(
+            ids.joinToString(separator = ",")
         )
 }

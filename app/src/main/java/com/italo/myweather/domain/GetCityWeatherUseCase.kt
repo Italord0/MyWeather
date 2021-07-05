@@ -7,6 +7,9 @@ import javax.inject.Inject
 class GetCityWeatherUseCase @Inject constructor(
     private val cityWeatherRepository: CityWeatherRepository
 ) {
-    suspend fun getCity(query: String): CityWeatherResponse? =
-        cityWeatherRepository.getCity(query)
+    suspend fun getCities(query: String): CityWeatherResponse? =
+        cityWeatherRepository.getCities(query)
+
+    suspend fun getCitiesById(ids: List<Long>): CityWeatherResponse? =
+        cityWeatherRepository.getCitiesById(ids)
 }

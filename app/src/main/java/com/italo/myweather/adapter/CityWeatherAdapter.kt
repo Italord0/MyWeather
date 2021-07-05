@@ -40,7 +40,7 @@ class CityWeatherAdapter(
             city.weather[0].description.replaceFirstChar { it.uppercase() }
         Picasso.get().load("https://www.countryflags.io/${city.sys.country}/shiny/64.png")
             .into(holder.ivCityCountry)
-        Picasso.get().load("http://openweathermap.org/img/wn/${city.weather[0].icon}@2x.png")
+        Picasso.get().load("https://openweathermap.org/img/wn/${city.weather[0].icon}@2x.png")
             .into(holder.ivCityWeather)
     }
 
