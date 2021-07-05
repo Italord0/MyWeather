@@ -18,4 +18,5 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="would_you_like_to_remove_this_city_from_your_favorite_list">Would you like to remove this city from your favorite list?</string>
+    <string name="no_internet_connection">No internet connection</string>
 </resources>

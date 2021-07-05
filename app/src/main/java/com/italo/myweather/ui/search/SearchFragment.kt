@@ -1,9 +1,13 @@
 package com.italo.myweather.ui.search
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -60,7 +64,11 @@ class SearchFragment : Fragment() {
         }
 
         binding.btnSearch.setOnClickListener {
-            searchViewModel.getCity(binding.editTextCity.text.toString())
+            if (isInternetAvailable(requireContext())) {
+                searchViewModel.getCity(binding.editTextCity.text.toString())
+            } else {
+                Toast.makeText(context, R.string.no_internet_connection, Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -93,5 +101,22 @@ class SearchFragment : Fragment() {
 
         val dialog: AlertDialog = builder.create()
         dialog.show()
+    }
+
+    private fun isInternetAvailable(context: Context): Boolean {
+        var result = false
+
+        val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE)
+            as ConnectivityManager
+
+        cm.getNetworkCapabilities(cm.activeNetwork)?.run {
+            result = when {
+                hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+                hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+                else -> false
+            }
+        }
+
+        return result
     }
 }
