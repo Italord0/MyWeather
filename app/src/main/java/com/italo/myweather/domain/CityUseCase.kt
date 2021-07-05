@@ -4,7 +4,7 @@ import com.italo.myweather.api.CityWeatherRepository
 import com.italo.myweather.data.CityWeatherResponse
 import javax.inject.Inject
 
-class GetCityWeatherUseCase @Inject constructor(
+class CityUseCase @Inject constructor(
     private val cityWeatherRepository: CityWeatherRepository
 ) {
     suspend fun getCities(query: String): CityWeatherResponse? =
