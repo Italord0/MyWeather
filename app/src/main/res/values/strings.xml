@@ -12,4 +12,5 @@
     <string name="f" translatable="false">ºF</string>
     <string name="k" translatable="false">ºK</string>
     <string name="save">Save</string>
+    <string name="type_a_city">Type a city</string>
 </resources>

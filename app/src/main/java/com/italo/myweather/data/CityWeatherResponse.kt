@@ -3,19 +3,24 @@ package com.italo.myweather.data
 import com.google.gson.annotations.SerializedName
 
 data class CityWeatherResponse(
-    val coord: Coord,
-    val weather: List<Weather>,
-    val base: String,
-    val main: Main,
-    val visibility: Long,
-    val wind: Wind,
-    val clouds: Clouds,
-    val dt: Long,
-    val sys: Sys,
-    val timezone: Long,
+    val message: String,
+    val cod: String,
+    val count: Long,
+    val list: List<City>
+)
+
+data class City(
     val id: Long,
     val name: String,
-    val cod: Long
+    val coord: Coord,
+    val main: Main,
+    val dt: Long,
+    val wind: Wind,
+    val sys: Sys,
+    val rain: Any? = null,
+    val snow: Any? = null,
+    val clouds: Clouds,
+    val weather: List<Weather>
 )
 
 data class Clouds(
@@ -23,8 +28,8 @@ data class Clouds(
 )
 
 data class Coord(
-    val lon: Double,
-    val lat: Double
+    val lat: Double,
+    val lon: Double
 )
 
 data class Main(
@@ -40,15 +45,17 @@ data class Main(
     val tempMax: Double,
 
     val pressure: Long,
-    val humidity: Long
+    val humidity: Long,
+
+    @SerializedName("sea_level")
+    val seaLevel: Long,
+
+    @SerializedName("grnd_level")
+    val grndLevel: Long
 )
 
 data class Sys(
-    val type: Long,
-    val id: Long,
-    val country: String,
-    val sunrise: Long,
-    val sunset: Long
+    val country: String
 )
 
 data class Weather(

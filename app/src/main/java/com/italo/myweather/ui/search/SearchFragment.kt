@@ -6,6 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.italo.myweather.adapter.CityWeatherAdapter
+import com.italo.myweather.data.City
 import com.italo.myweather.databinding.FragmentSearchBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -14,6 +17,9 @@ class SearchFragment : Fragment() {
 
     private lateinit var searchViewModel: SearchViewModel
     private var _binding: FragmentSearchBinding? = null
+
+    lateinit var cities: MutableList<City>
+    lateinit var mCityWeatherAdapter: CityWeatherAdapter
 
     private val binding get() = _binding!!
 
@@ -32,19 +38,37 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // TODO RETURN LIST OF CITIES
-        searchViewModel.cityLiveData.observe(
+        cities = ArrayList()
+        mCityWeatherAdapter = CityWeatherAdapter(cities, this::onWeatherClickListener)
+        setupRecyclerview()
+
+        searchViewModel.citiesLiveData.observe(
             viewLifecycleOwner,
-            { city ->
-                println(city.name)
+            { response ->
+                cities.clear()
+                cities.addAll(response)
+                mCityWeatherAdapter.notifyDataSetChanged()
+                println(cities)
             }
         )
 
-        searchViewModel.getCity("Recife")
+        binding.btnSearch.setOnClickListener {
+            searchViewModel.getCity(binding.editTextCity.text.toString())
+        }
+    }
+
+    private fun onWeatherClickListener(city: City) {
+        println(city.name)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun setupRecyclerview() {
+        binding.rvCityWeather.adapter = mCityWeatherAdapter
+        val layoutManager = LinearLayoutManager(context)
+        binding.rvCityWeather.layoutManager = layoutManager
     }
 }

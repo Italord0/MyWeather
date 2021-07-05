@@ -42,7 +42,7 @@ object Preferences {
     }
 
     fun getLanguageId(): Int {
-        return get<Int>("LANGUAGE", Int::class.java)
+        return get("LANGUAGE", Int::class.java)
     }
 
     fun getCountry(): String {
@@ -53,17 +53,34 @@ object Preferences {
         }
     }
 
+    fun getLangAPI(): String {
+        return when (get<Int>("LANGUAGE", Int::class.java)) {
+            R.id.radioButtonEnglish -> "en"
+            R.id.radioButtonPortuguese -> "pt_br"
+            else -> "ERROR"
+        }
+    }
+
+    fun getUnitsAPI(): String {
+        return when (get<Int>("TEMPERATURE", Int::class.java)) {
+            R.id.radioButtonK -> "standard"
+            R.id.radioButtonF -> "imperial"
+            R.id.radioButtonC -> "metric"
+            else -> "ERROR"
+        }
+    }
+
     fun getTemperature(): String {
         return when (get<Int>("TEMPERATURE", Int::class.java)) {
-            R.id.radioButtonC -> "C"
-            R.id.radioButtonF -> "F"
-            R.id.radioButtonK -> "K"
+            R.id.radioButtonK -> "ºK"
+            R.id.radioButtonF -> "ºF"
+            R.id.radioButtonC -> "ºC"
             else -> "ERROR"
         }
     }
 
     fun getTemperatureId(): Int {
-        return get<Int>("TEMPERATURE", Int::class.java)
+        return get("TEMPERATURE", Int::class.java)
     }
 
     fun clear() {
