@@ -25,9 +25,25 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 ## 🌦️ Projeto
 Aplicativo para consultas do tempo em tempo real pela OpenWeather
 
+## ▶️ Rodar o projeto
+Para rodar o projeto, você deverá adicionar sua chave da API do [OpenWeather](https://openweathermap.org/current) no arquivo ```local.properties``` como no exemplo abaixo :
+
+```properties
+## This file must *NOT* be checked into Version Control Systems,
+# as it contains information specific to your local configuration.
+#
+# Location of the SDK. This is only used by Gradle.
+# For customization when using a Version Control System, please read the
+# header note.
+#Sat Jun 19 22:41:43 BRT 2021
+sdk.dir = C\:\\Users\\Your_User\\AppData\\Local\\Android\\Sdk
+
+apiKey = sua_chave_aqui
+```
+
 ## 👨‍💻 Libs utilizadas
 - [Picasso](https://github.com/square/picasso)
 - [Retrofit](https://github.com/square/retrofit)
 
 ## 🔗 Api utilizada
-- [OpenWeather API](https://github.com/square/picasso)
+- [OpenWeather API](https://openweathermap.org/current)
