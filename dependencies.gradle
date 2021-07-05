@@ -35,4 +35,6 @@ ext {
     hilt_android = 'com.google.dagger:hilt-android:2.35'
     kapt_hilt_compiler = 'com.google.dagger:hilt-compiler:2.35'
 
+    picasso = 'com.squareup.picasso:picasso:2.71828'
+
 }

@@ -9,6 +9,7 @@ import com.italo.myweather.R
 import com.italo.myweather.data.City
 import com.italo.myweather.databinding.ItemWeatherBinding
 import com.italo.myweather.preferences.Preferences
+import com.squareup.picasso.Picasso
 import kotlin.math.roundToInt
 
 class CityWeatherAdapter(
@@ -34,6 +35,12 @@ class CityWeatherAdapter(
         holder.tvCityName.text = city.name
         holder.tvCityTemp.text =
             city.main.temp.roundToInt().toString().plus(Preferences.getTemperature())
+        holder.tvWeatherDescription.text =
+            city.weather[0].description.replaceFirstChar { it.uppercase() }
+        Picasso.get().load("https://www.countryflags.io/${city.sys.country}/shiny/64.png")
+            .into(holder.ivCityCountry)
+        Picasso.get().load("http://openweathermap.org/img/wn/${city.weather[0].icon}@2x.png")
+            .into(holder.ivCityWeather)
     }
 
     class ViewHolder(itemView: ItemWeatherBinding) : RecyclerView.ViewHolder(itemView.root) {
@@ -41,5 +48,6 @@ class CityWeatherAdapter(
         val ivCityCountry: ImageView = itemView.ivCityCountry
         val tvCityName: TextView = itemView.tvCityName
         val tvCityTemp: TextView = itemView.tvCityTemp
+        val tvWeatherDescription: TextView = itemView.tvWeatherDescription
     }
 }

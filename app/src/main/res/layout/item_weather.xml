@@ -7,7 +7,7 @@
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="110dp"
+        android:layout_height="130dp"
         android:backgroundTint="@color/blue">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,39 +19,50 @@
                 android:id="@+id/tvCityName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
                 android:text="THIS IS A CITY"
                 android:textColor="@color/white"
-                android:textSize="18sp"
+                android:textSize="35sp"
                 app:layout_constraintEnd_toStartOf="@id/ivCityWeather"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tvCityTemp"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:text="30º C"
                 android:textColor="@color/white"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="parent"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toStartOf="@id/ivCityWeather"
+                app:layout_constraintStart_toEndOf="@id/ivCityCountry"
                 app:layout_constraintTop_toBottomOf="@id/tvCityName" />
 
             <ImageView
                 android:id="@+id/ivCityWeather"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <TextView
+                android:id="@+id/tvWeatherDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="THIS IS SOME DESCRIPTION"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
             <ImageView
                 android:id="@+id/ivCityCountry"
-                android:layout_width="30dp"
-                android:layout_height="0dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@id/tvCityTemp"
-                app:layout_constraintTop_toBottomOf="@id/tvCityTemp" />
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvCityName" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

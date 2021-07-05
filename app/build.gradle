@@ -64,4 +64,6 @@ dependencies {
     implementation retrofit
     implementation retrofit_converter
     implementation logging_interceptor
+
+    implementation picasso
 }
