@@ -51,7 +51,9 @@ class FavoriteFragment : Fragment() {
             favoriteCitiesDbLiveData.observe(
                 viewLifecycleOwner,
                 {
-                    favoriteViewModel.getFavoritesFromApi(it)
+                    if (it.isNotEmpty()) {
+                        favoriteViewModel.getFavoritesFromApi(it)
+                    }
                 }
             )
             favoriteCitiesLiveData.observe(
