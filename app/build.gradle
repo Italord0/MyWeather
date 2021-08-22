@@ -70,4 +70,7 @@ dependencies {
     implementation room
     implementation room_ktx
     kapt room_compiler
+
+    testImplementation mockk
+    testImplementation junit
 }
