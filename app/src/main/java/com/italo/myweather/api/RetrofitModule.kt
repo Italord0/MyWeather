@@ -1,12 +1,6 @@
 package com.italo.myweather.api
 
 import com.italo.myweather.BuildConfig
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
-import java.util.concurrent.Executor
-import javax.inject.Named
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -14,23 +8,19 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.Executor
 
-@Module
-@InstallIn(SingletonComponent::class)
-class RetrofitModule {
+object RetrofitModule {
 
-    @Provides
     fun provideGson(): GsonConverterFactory = GsonConverterFactory.create()
 
-    @Provides
-    fun createOkHttpClient(interceptor: HttpLoggingInterceptor): OkHttpClient {
+    fun createOkHttpClient(loggingInterceptor: HttpLoggingInterceptor = logInterceptor()): OkHttpClient {
         val ohHttpClient = OkHttpClient.Builder()
-            .addInterceptor(interceptor)
+            .addInterceptor(loggingInterceptor)
 
         return ohHttpClient.build()
     }
 
-    @Provides
     fun logInterceptor(): HttpLoggingInterceptor {
         val logInterceptor = HttpLoggingInterceptor()
         if (BuildConfig.DEBUG) {
@@ -41,7 +31,6 @@ class RetrofitModule {
         return logInterceptor
     }
 
-    @Provides
     fun provideExecutor(): Executor {
         return Executor { command ->
             GlobalScope.launch(Dispatchers.IO) {
@@ -50,14 +39,11 @@ class RetrofitModule {
         }
     }
 
-    @Provides
-    @Named(RETROFIT_BASE_NAMED)
-    fun provideRetrofit(
-        okHttpClient: OkHttpClient,
-        converter: GsonConverterFactory,
-        @Named(API_OPEN_WEATHER_NAMED)
-        baseURL: String,
-        executor: Executor
+    fun provideBaseRetrofit(
+        okHttpClient: OkHttpClient = createOkHttpClient(),
+        converter: GsonConverterFactory = provideGson(),
+        baseURL: String = provideBaseURL(),
+        executor: Executor = provideExecutor()
     ): Retrofit {
         return Retrofit
             .Builder()
@@ -68,15 +54,9 @@ class RetrofitModule {
             .build()
     }
 
-    @Provides
-    @Named(API_OPEN_WEATHER_NAMED)
     fun provideBaseURL(): String {
         return BASE_URL
     }
 
-    companion object {
-        private const val BASE_URL = "https://api.openweathermap.org/data/2.5/"
-        private const val API_OPEN_WEATHER_NAMED = "API_OPEN_WEATHER_NAMED"
-        const val RETROFIT_BASE_NAMED = "RETROFIT_BASE_NAMED"
-    }
+    private const val BASE_URL = "https://api.openweathermap.org/data/2.5/"
 }

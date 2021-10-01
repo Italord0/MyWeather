@@ -6,17 +6,14 @@ import androidx.lifecycle.ViewModel
 import com.italo.myweather.data.City
 import com.italo.myweather.db.FavoriteCityRepository
 import com.italo.myweather.domain.CityUseCase
-import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-@HiltViewModel
-class SearchViewModel @Inject constructor(
-    private val useCase: CityUseCase,
-    private val repository: FavoriteCityRepository
+class SearchViewModel(
+    private val useCase: CityUseCase = CityUseCase(),
+    private val repository: FavoriteCityRepository = FavoriteCityRepository(),
 ) : ViewModel() {
 
     private val _citiesLiveData = MutableLiveData<List<City>>()

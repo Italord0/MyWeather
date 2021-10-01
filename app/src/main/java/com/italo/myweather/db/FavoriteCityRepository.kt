@@ -3,10 +3,10 @@ package com.italo.myweather.db
 import com.italo.myweather.dao.FavoriteCityDao
 import com.italo.myweather.data.City
 import com.italo.myweather.data.FavoriteCity
-import javax.inject.Inject
+import com.italo.myweather.di.FavoriteCityDBModule
 
-class FavoriteCityRepository @Inject constructor(
-    private val favoriteCityDao: FavoriteCityDao
+class FavoriteCityRepository(
+    private val favoriteCityDao: FavoriteCityDao = FavoriteCityDBModule.getFavoriteCityDao()
 ) {
     fun getFavoriteCities(): List<FavoriteCity> =
         favoriteCityDao.getAll()

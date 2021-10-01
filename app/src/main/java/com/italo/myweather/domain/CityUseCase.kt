@@ -2,10 +2,9 @@ package com.italo.myweather.domain
 
 import com.italo.myweather.api.CityWeatherRepository
 import com.italo.myweather.data.CityWeatherResponse
-import javax.inject.Inject
 
-class CityUseCase @Inject constructor(
-    private val cityWeatherRepository: CityWeatherRepository
+class CityUseCase(
+    private val cityWeatherRepository: CityWeatherRepository = CityWeatherRepository()
 ) {
     suspend fun getCities(query: String): CityWeatherResponse? =
         cityWeatherRepository.getCities(query)

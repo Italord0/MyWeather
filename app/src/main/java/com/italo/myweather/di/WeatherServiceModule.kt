@@ -2,21 +2,11 @@ package com.italo.myweather.di
 
 import com.italo.myweather.api.RetrofitModule
 import com.italo.myweather.api.WeatherApiService
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
-import javax.inject.Named
-import javax.inject.Singleton
 import retrofit2.Retrofit
 
-@Module
-@InstallIn(SingletonComponent::class)
-class WeatherServiceModule {
+object WeatherServiceModule {
 
-    @Provides
-    @Singleton
-    fun providesWeatherService(@Named(RetrofitModule.RETROFIT_BASE_NAMED) retrofit: Retrofit): WeatherApiService {
+    fun providesWeatherService(retrofit: Retrofit = RetrofitModule.provideBaseRetrofit()): WeatherApiService {
         return retrofit.create(WeatherApiService::class.java)
     }
 }

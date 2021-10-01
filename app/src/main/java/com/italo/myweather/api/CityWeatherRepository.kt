@@ -1,10 +1,10 @@
 package com.italo.myweather.api
 
 import com.italo.myweather.data.CityWeatherResponse
-import javax.inject.Inject
+import com.italo.myweather.di.WeatherServiceModule
 
-class CityWeatherRepository @Inject constructor(
-    private val weatherService: WeatherApiService
+class CityWeatherRepository(
+    private val weatherService: WeatherApiService = WeatherServiceModule.providesWeatherService(),
 ) {
     suspend fun getCities(query: String): CityWeatherResponse? =
         weatherService.getCities(
