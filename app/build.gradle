@@ -2,7 +2,6 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
-    id 'dagger.hilt.android.plugin'
 }
 
 apply from: rootProject.projectDir.absolutePath + "/dependencies.gradle"
@@ -57,9 +56,6 @@ dependencies {
     implementation navigation_ui_ktx
     implementation fragment_ktx
     implementation jetpack_preferences
-
-    implementation hilt_android
-    kapt kapt_hilt_compiler
 
     implementation retrofit
     implementation retrofit_converter

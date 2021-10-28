@@ -16,9 +16,7 @@ import com.italo.myweather.R
 import com.italo.myweather.adapter.CityWeatherAdapter
 import com.italo.myweather.data.City
 import com.italo.myweather.databinding.FragmentSearchBinding
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class SearchFragment : Fragment() {
 
     private val searchViewModel: SearchViewModel by viewModels()

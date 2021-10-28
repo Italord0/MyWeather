@@ -12,9 +12,7 @@ import com.italo.myweather.R
 import com.italo.myweather.adapter.CityWeatherAdapter
 import com.italo.myweather.data.City
 import com.italo.myweather.databinding.FragmentFavoriteBinding
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class FavoriteFragment : Fragment() {
 
     private val favoriteViewModel: FavoriteViewModel by viewModels()

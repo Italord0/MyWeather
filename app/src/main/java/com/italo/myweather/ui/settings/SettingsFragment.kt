@@ -8,9 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.italo.myweather.databinding.FragmentSettingsBinding
 import com.italo.myweather.preferences.Preferences
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class SettingsFragment : Fragment() {
 
     private val settingsViewModel: SettingsViewModel by viewModels()

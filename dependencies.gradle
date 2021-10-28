@@ -32,9 +32,6 @@ ext {
     retrofit_converter = "com.squareup.retrofit2:converter-gson:2.9.0"
     logging_interceptor = "com.squareup.okhttp3:logging-interceptor:4.9.0"
 
-    hilt_android = 'com.google.dagger:hilt-android:2.35'
-    kapt_hilt_compiler = 'com.google.dagger:hilt-compiler:2.35'
-
     picasso = 'com.squareup.picasso:picasso:2.71828'
 
     room = "androidx.room:room-runtime:2.3.0"
