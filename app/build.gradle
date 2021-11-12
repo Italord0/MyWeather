@@ -67,6 +67,8 @@ dependencies {
     implementation room_ktx
     kapt room_compiler
 
+    implementation koin
+
     testImplementation mockk
     testImplementation junit
 }

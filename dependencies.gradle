@@ -42,4 +42,6 @@ ext {
 
     junit = "junit:junit:4.13"
 
+    koin = "io.insert-koin:koin-android:3.0.2"
+
 }

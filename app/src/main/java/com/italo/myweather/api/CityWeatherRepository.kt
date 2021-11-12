@@ -1,11 +1,13 @@
 package com.italo.myweather.api
 
 import com.italo.myweather.data.CityWeatherResponse
-import com.italo.myweather.di.WeatherServiceModule
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
-class CityWeatherRepository(
-    private val weatherService: WeatherApiService = WeatherServiceModule.providesWeatherService(),
-) {
+class CityWeatherRepository() : KoinComponent {
+
+    private val weatherService: WeatherApiService by inject<WeatherApiService>()
+
     suspend fun getCities(query: String): CityWeatherResponse? =
         weatherService.getCities(
             query

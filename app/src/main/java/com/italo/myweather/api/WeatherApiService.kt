@@ -3,6 +3,7 @@ package com.italo.myweather.api
 import com.italo.myweather.BuildConfig
 import com.italo.myweather.data.CityWeatherResponse
 import com.italo.myweather.preferences.Preferences
+import org.koin.core.component.KoinComponent
 import retrofit2.http.GET
 import retrofit2.http.Query
 
