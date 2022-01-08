@@ -19,6 +19,8 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [Kotlin](https://kotlinlang.org/)
 - [MVVM Architecture](https://developer.android.com/topic/libraries/architecture/viewmodel)
 - [Hilt](https://developer.android.com/training/dependency-injection/hilt-android?hl=pt-br)
+- [Koin](https://insert-koin.io/)
+- [Retrofit](https://square.github.io/retrofit/)
 - [Room](https://developer.android.com/training/data-storage/room)
 - [Kotlin coroutines](https://developer.android.com/kotlin/coroutines)
 
