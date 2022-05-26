@@ -38,7 +38,7 @@ class CityWeatherAdapter(
             city.main.temp.roundToInt().toString().plus(Preferences.getTemperature())
         holder.tvWeatherDescription.text =
             city.weather[0].description.replaceFirstChar { it.uppercase() }
-        Picasso.get().load("https://www.countryflags.io/${city.sys.country}/shiny/64.png")
+        Picasso.get().load("https://countryflagsapi.com/png/${city.sys.country}")
             .into(holder.ivCityCountry)
         Picasso.get().load("https://openweathermap.org/img/wn/${city.weather[0].icon}@2x.png")
             .into(holder.ivCityWeather)
