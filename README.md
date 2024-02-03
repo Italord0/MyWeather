@@ -2,9 +2,9 @@
   
 <img src="https://user-images.githubusercontent.com/32901063/118206851-c10e2f80-b439-11eb-8124-285d87ca1812.png" width="100">
 </p>
- ( Pós-Graduação C.E.S.A.R School )
- 
-## 📱 Aplicativo MyWeather
+( C.E.S.A.R School Postgraduate Program )
+
+## 📱 MyWeather App
 
 <img src="https://user-images.githubusercontent.com/32901063/124460463-c87cf580-dd65-11eb-9692-efbdb81fed36.png" width="200">
 
@@ -14,22 +14,21 @@
 <img src="https://user-images.githubusercontent.com/32901063/124460165-658b5e80-dd65-11eb-861e-8b385d5d93e7.png" width="250">
 </p>
 
-## :rocket: Tecnologias
-Esse projeto foi desenvolvido com as seguintes tecnologias:
+## :rocket: Technologies
+This project was developed using the following technologies:
 - [Kotlin](https://kotlinlang.org/)
 - [MVVM Architecture](https://developer.android.com/topic/libraries/architecture/viewmodel)
-- [Hilt](https://developer.android.com/training/dependency-injection/hilt-android?hl=pt-br)
+- [Hilt](https://developer.android.com/training/dependency-injection/hilt-android?hl=en)
 - [Koin](https://insert-koin.io/)
 - [Retrofit](https://square.github.io/retrofit/)
 - [Room](https://developer.android.com/training/data-storage/room)
 - [Kotlin coroutines](https://developer.android.com/kotlin/coroutines)
 
+## 🌦️ Project
+App for real-time weather queries using OpenWeather API
 
-## 🌦️ Projeto
-Aplicativo para consultas de clima em tempo real pela OpenWeather
-
-## ▶️ Rodar o projeto
-Para rodar o projeto, você deverá adicionar sua chave da API do [OpenWeather](https://openweathermap.org/current) no arquivo ```local.properties``` como no exemplo abaixo :
+## ▶️ Running the project
+To run the project, you should add your [OpenWeather](https://openweathermap.org/current) API key to the `local.properties` file as shown below:
 
 ```properties
 ## This file must *NOT* be checked into Version Control Systems,
@@ -41,12 +40,4 @@ Para rodar o projeto, você deverá adicionar sua chave da API do [OpenWeather](
 #Sat Jun 19 22:41:43 BRT 2021
 sdk.dir = C\:\\Users\\Your_User\\AppData\\Local\\Android\\Sdk
 
-apiKey = sua_chave_aqui
-```
-
-## 👨‍💻 Libs utilizadas
-- [Picasso](https://github.com/square/picasso)
-- [Retrofit](https://github.com/square/retrofit)
-
-## 🔗 Api utilizada
-- [OpenWeather API](https://openweathermap.org/current)
+apiKey = your_api_key_here
